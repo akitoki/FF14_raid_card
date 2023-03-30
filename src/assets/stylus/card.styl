@@ -1,0 +1,197 @@
+#card
+  width 900px
+  height 600px
+  margin 0 auto
+.card-wrap
+  width 900px
+  height 600px
+  border-radius 13px
+  overflow hidden
+  position relative
+  background-repeat no-repeat
+  background-position center center
+  color #fff
+  &.type-tank
+    background-image url('../images/bg_tank.png')
+  &.type-healer
+    background-image url('../images/bg_healer.png')
+  &.type-dps
+    background-image url('../images/bg_dps.png')
+  .frame
+    display block
+    width 900px
+    height 600px
+    position absolute
+    left 0
+    top 0
+    background url('../images/frame.png')
+    z-index 100
+  .card-inner
+    .card-column
+      display flex
+      .chara-img
+        width 300px
+        height 600px
+        img
+          width 300px
+          height 600px
+          object-fit cover
+      .param
+        padding 25px 35px 0
+        .name-block
+          display flex
+          align-items center
+          justify-content center
+          .job-icon
+            width 48px
+            margin 3px 20px 0 0
+            img
+              width 100%
+          .profile
+            font-family 'Noto Serif JP', serif
+            font-display swap
+            line-height 1.4
+            .name
+              color #ffc859
+              font-weight bold
+              font-size 3rem
+              text-overflow ellipsis
+              max-width 442px
+              overflow hidden
+              white-space nowrap
+            .world
+              font-size 2rem
+        .contents-block
+          margin 10px 0
+          border-radius 10px
+          background rgba(#000, 0.35)
+          padding 20px 25px
+          .block-inner
+            dl.type
+              margin 0
+              padding-left 45px
+              position relative
+              line-height 1.4
+              &::before
+                content ""
+                width 32px
+                height 32px
+                display block
+                position absolute
+                left 0
+                top 50%
+                transform translateY(-50%)
+                background-repeat no-repeat
+                background-position center center
+              &.contents
+                &::before
+                  background-image url('../images/swords.png')
+                  background-size contain
+              &.time
+                &::before
+                  background-image url('../images/time.png')
+                  background-size contain
+              &.vc
+                &::before
+                  background-image url('../images/vc.png')
+                  background-size contain
+              &.travel
+                &::before
+                  background-image url('../images/data-center.png')
+                  background-size contain
+              &.period
+                &::before
+                  background-image url('../images/crown.png')
+                  background-size contain
+              &.frequency
+                &::before
+                  background-image url('../images/calendar.png')
+                  background-size contain
+              dt
+                color #ffc859
+                font-weight normal
+                font-size 1.4rem
+              dd
+                font-size 1.6rem
+            .flex-block
+              display flex
+              justify-content space-between
+              dl.type
+                width 160px
+          .top-block
+            text-align center
+            margin-bottom 10px
+            dl.type
+              display inline-block
+              text-align left
+              dd
+                font-size 2rem
+                font-weight bold
+          .bottom-block
+            margin-top 10px
+            .flex-block
+              dl.type.frequency
+                width 320px
+        .bottom-prof-block
+          display flex
+          justify-content space-between
+          .flex-block
+            width 250px
+            .title
+              text-align center
+              font-size 2rem
+              color #ffc859
+              font-family 'Noto Serif JP', serif
+              font-display swap
+              margin-bottom 5px
+            .comment-block
+              background rgba(#000, 0.35)
+              border-radius 10px
+              padding 15px
+              height calc(100% - 35px)
+              p
+                font-size 1.4rem
+                letter-spacing normal
+                margin 0
+            .chart-block
+              background rgba(#000, 0.35)
+              border-radius 10px
+              padding 15px
+              height calc(100% - 35px)
+              ul.chart
+                list-style none
+                padding 0
+                margin 0
+                li
+                  display flex
+                  align-items center
+                  + li
+                    margin-top 5px
+                  .icon
+                    margin-right 10px
+                    img
+                      width 30px
+                  .meter-wrap
+                    width 100%
+                  .meter
+                    height 24px
+                    overflow hidden
+                    position relative
+                    for num in (1..100)
+                      &.w{num}
+                        width: (num)%
+                    &::before
+                      content ""
+                      display block
+                      position absolute
+                      left 0
+                      top 0
+                      width 180px
+                      height 100%
+                      background linear-gradient(90deg, rgba(255,200,89,1) 0%, rgba(237,119,46,1) 100%)
+  .copyright
+    font-family 'Noto Serif JP', serif
+    font-size 1rem
+    color #fff
+    text-align right
+    margin-top 8px
