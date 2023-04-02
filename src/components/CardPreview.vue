@@ -5,7 +5,7 @@
     .card-inner
       .card-column
         .chara-img
-          img(src="@/assets/images/no-image.png")
+          img(:src="[imageUrl ? imageUrl : require('@/assets/images/no-image.png')]")
         .param
           .name-block
             .job-icon
@@ -34,46 +34,47 @@
                 .flex-block
                   dl.type.period
                     dt クリア目標
-                    dd 2ヶ月以内
+                    dd {{clearPeriod}}
                   dl.type.frequency
                     dt 活動頻度
                     dd
-                      span 週5回前後
-                      span （土日除く）
+                      span {{frequency}}{{standard}}
+                      span.week(v-if="weekUpdate") （{{weekUpdate}}
+                      span(v-if="weekUpdate") {{yesOrNo}}）
           .bottom-prof-block
             .job-chart.flex-block
               .title JOB CHART
               .chart-block
                 ul.chart
-                  li
+                  li(v-if="jobCount > 0")
                     .icon
-                      img(src="@/assets/images/jobs/Monk.png")
+                      img(:src="[selectJob1.id ? require(`@/assets/images/jobs/${selectJob1.id}.png`) : require('@/assets/images/jobs/Paladin.png')]")
                     .meter-wrap
-                      .meter.w100
-                  li
+                      .meter(:class="`w${jobPoint1}`")
+                  li(v-if="jobCount > 1")
                     .icon
-                      img(src="@/assets/images/jobs/Monk.png")
+                      img(:src="[selectJob2.id ? require(`@/assets/images/jobs/${selectJob2.id}.png`) : require('@/assets/images/jobs/Paladin.png')]")
                     .meter-wrap
-                      .meter.w85
-                  li
+                      .meter(:class="`w${jobPoint2}`")
+                  li(v-if="jobCount > 2")
                     .icon
-                      img(src="@/assets/images/jobs/Monk.png")
+                      img(:src="[selectJob3.id ? require(`@/assets/images/jobs/${selectJob3.id}.png`) : require('@/assets/images/jobs/Paladin.png')]")
                     .meter-wrap
-                      .meter.w50
-                  li
+                      .meter(:class="`w${jobPoint3}`")
+                  li(v-if="jobCount > 3")
                     .icon
-                      img(src="@/assets/images/jobs/Monk.png")
+                      img(:src="[selectJob4.id ? require(`@/assets/images/jobs/${selectJob4.id}.png`) : require('@/assets/images/jobs/Paladin.png')]")
                     .meter-wrap
-                      .meter.w20
-                  li
+                      .meter(:class="`w${jobPoint4}`")
+                  li(v-if="jobCount > 4")
                     .icon
-                      img(src="@/assets/images/jobs/Monk.png")
+                      img(:src="[selectJob5.id ? require(`@/assets/images/jobs/${selectJob5.id}.png`) : require('@/assets/images/jobs/Paladin.png')]")
                     .meter-wrap
-                      .meter.w15
+                      .meter(:class="`w${jobPoint5}`")
             .comment.flex-block
               .title COMMENT
               .comment-block
-                p コメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメント
+                p {{comment}}
           .copyright (C) SQUARE ENIX CO., LTD. All Rights Reserved.
 
 button(@click="caputureImage") 画像化
@@ -87,6 +88,9 @@ export default {
   computed: {
     cardType() {
       return this.$store.state.cardType
+    },
+    imageUrl() {
+      return this.$store.state.imageUrl
     },
     charactorName() {
       return this.$store.state.charactorName
@@ -105,6 +109,57 @@ export default {
     },
     dcTravelCheck() {
       return this.$store.state.dcTravelCheck
+    },
+    clearPeriod() {
+      return this.$store.state.clearPeriod
+    },
+    frequency() {
+      return this.$store.state.frequency
+    },
+    standard() {
+      return this.$store.state.standard
+    },
+    weekUpdate() {
+      return this.$store.state.week
+    },
+    yesOrNo() {
+      return this.$store.state.yesOrNo
+    },
+    selectJob1() {
+      return this.$store.state.selectJob1
+    },
+    selectJob2() {
+      return this.$store.state.selectJob2
+    },
+    selectJob3() {
+      return this.$store.state.selectJob3
+    },
+    selectJob4() {
+      return this.$store.state.selectJob4
+    },
+    selectJob5() {
+      return this.$store.state.selectJob5
+    },
+    jobPoint1() {
+      return this.$store.state.jobPoint1
+    },
+    jobPoint2() {
+      return this.$store.state.jobPoint2
+    },
+    jobPoint3() {
+      return this.$store.state.jobPoint3
+    },
+    jobPoint4() {
+      return this.$store.state.jobPoint4
+    },
+    jobPoint5() {
+      return this.$store.state.jobPoint5
+    },
+    jobCount() {
+      return this.$store.state.jobCount
+    },
+    comment() {
+      return this.$store.state.comment
     },
   },
   methods: {
