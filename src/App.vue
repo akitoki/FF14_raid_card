@@ -26,7 +26,7 @@ header.header
           br
           | Microsoft Edge(バージョン111.0.1661.6)
           br
-          | Firefox、Safari等上記以外のブラウザや、Mac、スマートフォンでの動作に関しては保証致しかねます。
+          | 上記以外のブラウザや、スマートフォンでの動作に関しては保証致しかねます。
       section
         h2.title ご利用にあたって
         p
