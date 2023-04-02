@@ -44,7 +44,8 @@ header.header
       section
         h2.title 更新履歴
         ul
-          li 4/2 ジェネレーター公開
+          li 2023.04.03 カード生成の際にフォントが正常に当たらない不具合、一部環境でのダークモード時の表示不具合の対応
+          li 2023.04.02 ジェネレーター公開
   .card-create(v-if="pageCount === 2")
     InputContents
     cardPreview
