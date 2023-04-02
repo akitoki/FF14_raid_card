@@ -10,7 +10,7 @@ header.header
       section
         h2.title このページについて
         p
-          | FINAL FANTAXY XIVにおいて、高難易度レイド等のバトルコンテンツへ向けた自己紹介用のカードメーカーです。
+          | FINAL FANTAXY XIVにおいて、高難易度レイド等のバトルコンテンツへ向けた自己紹介用のカードジェネレーターです。
           br
           | The Lodestoneの募集記事と一緒にSNSに投稿するなど、固定パーティーを探す際の補助的な用途にご活用ください。
       section
@@ -30,17 +30,21 @@ header.header
       section
         h2.title ご利用にあたって
         p
-          | 当コンテンツは製作者のフロントエンド学習を目的として作られました。そのため、ゲーム内の最新の状態が反映されていない場合があります。
+          | 当ジェネレーターは製作者のフロントエンド学習を目的として作られました。そのため、ゲーム内の最新の状態が反映されていない場合があります。
           br
           | 不具合、ご意見などございましたら、
           a(href="https://twitter.com/akitoki" target="_blank") @akitoki
           | までご連絡ください。
           br
-          | また当コンテンツにて作成したコンテンツを利用したことで利用者に何かしらのトラブルが発生したとしても、当方は責任を負いません。
+          | また当ジェネレーターにて作成したコンテンツを利用したことで利用者に何かしらのトラブルが発生したとしても、当方は責任を負いません。
           br
           | 以上同意していただけましたら下のボタンよりお進みください。
-      .create-button
-        button.card-create-button(@click="pageCountPlus") カードを作成する
+          .create-button
+            button.card-create-button(@click="pageCountPlus") カードを作成する
+      section
+        h2.title 更新履歴
+        ul
+          li 4/2 ジェネレーター公開
   .card-create(v-if="pageCount === 2")
     InputContents
     cardPreview
