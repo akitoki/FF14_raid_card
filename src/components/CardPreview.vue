@@ -1,87 +1,92 @@
 <template lang="pug">
-#card
-  .card-wrap(:class="[cardType.class ? cardType.class : 'type-tank']")
-    .frame
-    .card-inner
-      .card-column
-        .chara-img
-          img(:src="[imageUrl ? imageUrl : require('@/assets/images/no-image.png')]")
-        .param
-          .name-block
-            .job-icon
-              img(:src="[cardType.class ? require(`@/assets/images/roles/${cardType.class}.png`) : require('@/assets/images/roles/type-tank.png')]")
-            .profile
-              .name {{charactorName}}
-              .world {{dataCenter}} / {{world}}
-          .contents-block
-            .block-inner
-              .top-block
-                dl.type.contents
-                  dt コンテンツ
-                  dd {{contentsName}}
-              .mid-block
-                .flex-block
-                  dl.type.time
-                    dt 活動時間
-                    dd {{startTimeSelect}}時～{{endTimeSelect}}時
-                  dl.type.vc
-                    dt VC
-                    dd {{vcCheck}}
-                  dl.type.travel
-                    dt DCトラベル
-                    dd {{dcTravelCheck}}
-              .bottom-block
-                .flex-block
-                  dl.type.period
-                    dt クリア目標
-                    dd {{clearPeriod}}
-                  dl.type.frequency
-                    dt 活動頻度
-                    dd
-                      span {{frequency}}{{standard}}
-                      span.week(v-if="weekUpdate") （{{weekUpdate}}
-                      span(v-if="weekUpdate") {{yesOrNo}}）
-          .bottom-prof-block
-            .job-chart.flex-block
-              .title PROFICIENCY LEVELS
-              .chart-block
-                ul.chart
-                  li(v-if="jobCount > 0")
-                    .icon
-                      img(:src="[selectJob1.id ? require(`@/assets/images/jobs/${selectJob1.id}.png`) : require('@/assets/images/jobs/Paladin.png')]")
-                    .meter-wrap
-                      .meter(:class="`w${jobPoint1}`")
-                  li(v-if="jobCount > 1")
-                    .icon
-                      img(:src="[selectJob2.id ? require(`@/assets/images/jobs/${selectJob2.id}.png`) : require('@/assets/images/jobs/Paladin.png')]")
-                    .meter-wrap
-                      .meter(:class="`w${jobPoint2}`")
-                  li(v-if="jobCount > 2")
-                    .icon
-                      img(:src="[selectJob3.id ? require(`@/assets/images/jobs/${selectJob3.id}.png`) : require('@/assets/images/jobs/Paladin.png')]")
-                    .meter-wrap
-                      .meter(:class="`w${jobPoint3}`")
-                  li(v-if="jobCount > 3")
-                    .icon
-                      img(:src="[selectJob4.id ? require(`@/assets/images/jobs/${selectJob4.id}.png`) : require('@/assets/images/jobs/Paladin.png')]")
-                    .meter-wrap
-                      .meter(:class="`w${jobPoint4}`")
-                  li(v-if="jobCount > 4")
-                    .icon
-                      img(:src="[selectJob5.id ? require(`@/assets/images/jobs/${selectJob5.id}.png`) : require('@/assets/images/jobs/Paladin.png')]")
-                    .meter-wrap
-                      .meter(:class="`w${jobPoint5}`")
-            .comment.flex-block
-              .title COMMENT
-              .comment-block
-                p {{comment}}
-          .copyright (C) SQUARE ENIX CO., LTD. All Rights Reserved.
-
-button(@click="caputureImage") 画像化
+.card-section#card
+  .card-inner
+    h2.title CARD PREVIEW
+    #card-preview
+      .card-wrap(:class="[cardType.class ? cardType.class : 'type-tank']")
+        .frame
+        .card-inner
+          .card-column
+            .chara-img
+              img(:src="[imageUrl ? imageUrl : require('@/assets/images/no-image.png')]")
+            .param
+              .name-block
+                .job-icon
+                  img(:src="[cardType.class ? require(`@/assets/images/roles/${cardType.class}.png`) : require('@/assets/images/roles/type-tank.png')]")
+                .profile
+                  .name {{charactorName}}
+                  .world {{dataCenter}} / {{world}}
+              .contents-block
+                .block-inner
+                  .top-block
+                    dl.type.contents
+                      dt 募集コンテンツ
+                      dd {{contentsName}}
+                  .mid-block
+                    .flex-block
+                      dl.type.time
+                        dt 活動可能時間
+                        dd {{startTimeSelect}}時～{{endTimeSelect}}時
+                      dl.type.vc
+                        dt VC
+                        dd {{vcCheck}}
+                      dl.type.travel
+                        dt DCトラベル
+                        dd {{dcTravelCheck}}
+                  .bottom-block
+                    .flex-block
+                      dl.type.period
+                        dt クリア目標
+                        dd {{clearPeriod}}
+                      dl.type.frequency
+                        dt 活動頻度
+                        dd
+                          span {{frequency}}{{standard}}
+                          span.week(v-if="weekUpdate") （{{weekUpdate}}
+                          span(v-if="weekUpdate") {{yesOrNo}}）
+              .bottom-prof-block
+                .job-chart.flex-block
+                  .title PROFICIENCY LEVELS
+                  .chart-block
+                    ul.chart
+                      li(v-if="jobCount > 0")
+                        .icon
+                          img(:src="[selectJob1.id ? require(`@/assets/images/jobs/${selectJob1.id}.png`) : require('@/assets/images/jobs/Paladin.png')]")
+                        .meter-wrap
+                          .meter(:class="`w${jobPoint1}`")
+                      li(v-if="jobCount > 1")
+                        .icon
+                          img(:src="[selectJob2.id ? require(`@/assets/images/jobs/${selectJob2.id}.png`) : require('@/assets/images/jobs/Paladin.png')]")
+                        .meter-wrap
+                          .meter(:class="`w${jobPoint2}`")
+                      li(v-if="jobCount > 2")
+                        .icon
+                          img(:src="[selectJob3.id ? require(`@/assets/images/jobs/${selectJob3.id}.png`) : require('@/assets/images/jobs/Paladin.png')]")
+                        .meter-wrap
+                          .meter(:class="`w${jobPoint3}`")
+                      li(v-if="jobCount > 3")
+                        .icon
+                          img(:src="[selectJob4.id ? require(`@/assets/images/jobs/${selectJob4.id}.png`) : require('@/assets/images/jobs/Paladin.png')]")
+                        .meter-wrap
+                          .meter(:class="`w${jobPoint4}`")
+                      li(v-if="jobCount > 4")
+                        .icon
+                          img(:src="[selectJob5.id ? require(`@/assets/images/jobs/${selectJob5.id}.png`) : require('@/assets/images/jobs/Paladin.png')]")
+                        .meter-wrap
+                          .meter(:class="`w${jobPoint5}`")
+                .comment.flex-block
+                  .title COMMENT
+                  .comment-block
+                    p {{comment}}
+              .copyright (C) SQUARE ENIX CO., LTD. All Rights Reserved.
+    .button-wrap
+      button.download(@click="caputureImage")
+        | カード画像をダウンロード
 </template>
 
 <script>
-import domtoimage from 'dom-to-image';
+import domtoimage from 'dom-to-image'
+import FileSaver from 'file-saver'
 
 export default {
   name: 'cardPreview',
@@ -175,17 +180,13 @@ export default {
         .then(function (dataUrl) {
           const img = new Image();
           img.src = dataUrl;
-          console.log(dataUrl)
-          document.body.appendChild(img);
-          window.open(dataUrl, 'cardImage', 'width=900, height=600')
+          FileSaver.saveAs(dataUrl, "raid-card.png");
         })
         .catch(function (error) {
-          console.error('oops, something went wrong!', error);
+          console.error('カード画像出力エラー', error);
         });
     }
-
   }
 }
-/* ES6 */
 
 </script>

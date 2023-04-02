@@ -1,26 +1,46 @@
 <template lang="pug">
 .job-chart-column(v-if="Columns > 0")
-  select(v-model="selectJob1")
-    option(v-for="job in jobs" :value="job.id") {{job.name}}
+  span.title ジョブ
+  .select-wrapper
+    select(v-model="selectJob1")
+      option(v-for="job in jobs" :value="job.id") {{job.name}}
+  span.title 練度
   input(type="number" id="jobChartPoint1" value="50" @change="jobChartPoint1" min="0" max="100" placeholder="1~100までを設定")
 .job-chart-column(v-if="Columns > 1")
-  select(v-model="selectJob2")
-    option(v-for="job in jobs" :value="job.id") {{job.name}}
+  span.title ジョブ
+  .select-wrapper
+    select(v-model="selectJob2")
+      option(v-for="job in jobs" :value="job.id") {{job.name}}
+  span.title 練度
   input(type="number" id="jobChartPoint2" value="50" @change="jobChartPoint2" min="0" max="100")
 .job-chart-column(v-if="Columns > 2")
-  select(v-model="selectJob3")
-    option(v-for="job in jobs" :value="job.id") {{job.name}}
+  span.title ジョブ
+  .select-wrapper
+    select(v-model="selectJob3")
+      option(v-for="job in jobs" :value="job.id") {{job.name}}
+  span.title 練度
   input(type="number" id="jobChartPoint3" value="50" @change="jobChartPoint3" min="0" max="100")
 .job-chart-column(v-if="Columns > 3")
-  select(v-model="selectJob4")
-    option(v-for="job in jobs" :value="job.id") {{job.name}}
+  span.title ジョブ
+  .select-wrapper
+    select(v-model="selectJob4")
+      option(v-for="job in jobs" :value="job.id") {{job.name}}
+  span.title 練度
   input(type="number" id="jobChartPoint4" value="50" @change="jobChartPoint4" min="0" max="100")
 .job-chart-column(v-if="Columns > 4")
-  select(v-model="selectJob5")
-    option(v-for="job in jobs" :value="job.id") {{job.name}}
+  span.title ジョブ
+  .select-wrapper
+    select(v-model="selectJob5")
+      option(v-for="job in jobs" :value="job.id") {{job.name}}
+  span.title 練度
   input(type="number" id="jobChartPoint5" value="50" @change="jobChartPoint5" min="0" max="100")
-button(type="button" @click="addJob" v-if="Columns < 5") ジョブを増やす
-button(type="button" @click="deleteJob" v-if="Columns > 1") ジョブを減らす
+.button-list
+  button.add-button(type="button" @click="addJob" v-if="Columns < 5")
+    | ジョブを増やす
+    span ＋
+  button.delete-button(type="button" @click="deleteJob" v-if="Columns > 1")
+    | ジョブを減らす
+    span －
 </template>
 
 <script>

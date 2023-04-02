@@ -1,14 +1,18 @@
 <template lang="pug">
-div
+.select-wrapper
   select(v-model="dataCenterSelect")
     option(v-for="dataCenter in dataCenters" :value="dataCenter") {{dataCenter}}
-  select(v-model="worldElemental" v-if="dataCenterSelect === 'Elemental'")
+.select-wrapper(v-if="dataCenterSelect === 'Elemental'")
+  select(v-model="worldElemental")
     option(v-for="elemental in elementalDc" :value="elemental") {{elemental}}
-  select(v-model="worldGaia" v-if="dataCenterSelect === 'Gaia'")
+.select-wrapper(v-if="dataCenterSelect === 'Gaia'")
+  select(v-model="worldGaia")
     option(v-for="Gaia in gaiaDc" :value="Gaia") {{Gaia}}
-  select(v-model="worldMana" v-if="dataCenterSelect === 'Mana'")
+.select-wrapper(v-if="dataCenterSelect === 'Mana'")
+  select(v-model="worldMana")
     option(v-for="mana in manaDc" :value="mana") {{mana}}
-  select(v-model="worldMeteor" v-if="dataCenterSelect === 'Meteor'")
+.select-wrapper(v-if="dataCenterSelect === 'Meteor'")
+  select(v-model="worldMeteor")
     option(v-for="meteor in meteorDc" :value="meteor") {{meteor}}
 </template>
 <script>
