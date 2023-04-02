@@ -175,7 +175,7 @@ export default {
   },
   methods: {
     caputureImage() {
-      const node = document.querySelector('.card-wrap');
+      const node = document.querySelector('#card-preview');
       domtoimage.toPng(node)
         .then(function (dataUrl) {
           const img = new Image();
