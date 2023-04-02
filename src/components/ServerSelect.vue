@@ -1,0 +1,49 @@
+<template lang="pug">
+div
+  select(v-model="dataCenterSelect")
+    option(v-for="dataCenter in dataCenters" :value="dataCenter") {{dataCenter}}
+  select(v-model="worldElemental" v-if="dataCenterSelect === 'Elemental'")
+    option(v-for="elemental in elementalDc" :value="elemental") {{elemental}}
+  select(v-model="worldGaia" v-if="dataCenterSelect === 'Gaia'")
+    option(v-for="Gaia in gaiaDc" :value="Gaia") {{Gaia}}
+  select(v-model="worldMana" v-if="dataCenterSelect === 'Mana'")
+    option(v-for="mana in manaDc" :value="mana") {{mana}}
+  select(v-model="worldMeteor" v-if="dataCenterSelect === 'Meteor'")
+    option(v-for="meteor in meteorDc" :value="meteor") {{meteor}}
+</template>
+<script>
+export default {
+  name: 'ServerSelect',
+  data() {
+    return {
+      dataCenterSelect: 'Elemental',
+      worldElemental: 'Aegis',
+      worldGaia: 'Alexander',
+      worldMana: 'Anima',
+      worldMeteor: 'Belias',
+      dataCenters: ['Elemental', 'Gaia', 'Mana', 'Meteor'],
+      elementalDc: ['Aegis', 'Atomos', 'Carbuncle', 'Garuda', 'Gungnir', 'Kujata', 'Tonberry', 'Typhon'],
+      gaiaDc: ['Alexander', 'Bahamut', 'Durandal', 'Fenrir', 'Ifrit', 'Ridill', 'Tiamat', 'Ultima'],
+      manaDc: ['Anima', 'Asura', 'Chocobo', 'Hades', 'Ixion', 'Masamune', 'Pandaemonium', 'Titan'],
+      meteorDc: ['Belias', 'Mandragora', 'Ramuh', 'Shinryu', 'Unicorn', 'Valefor', 'Yojimbo', 'Zeromus']
+    }
+  },
+  watch: {
+    dataCenterSelect(value) {
+      this.$store.commit('dataCenter', value)
+    },
+    worldElemental(value) {
+      this.$store.commit('world', value)
+    },
+    worldGaia(value) {
+      this.$store.commit('world', value)
+    },
+    worldMana(value) {
+      this.$store.commit('world', value)
+    },
+    worldMeteor(value) {
+      this.$store.commit('world', value)
+    }
+  }
+}
+</script>

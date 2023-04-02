@@ -5,6 +5,7 @@ label(v-for="cardType in cardTypeArr")
 .image-input
   input(type="file" ref="preview" @change="imgUpload")
 input(type="text" v-model="changeName" id="charactorName" placeholder="キャラクター名")
+ServerSelect
 input(type="text" v-model="contentsName" id="contentsName" placeholder="コンテンツ名（例：万魔殿パンデモニウム：煉獄編")
 select(v-model="startTimeSelect")
   option(v-for="startTime in startTimesArr" :value="startTime") {{ startTime }}
@@ -40,10 +41,12 @@ div
 </template>
 
 <script>
+import ServerSelect from './ServerSelect';
 import JobChart from './JobChart';
 export default {
   name: 'InputContents',
   components: {
+    ServerSelect,
     JobChart
   },
   data() {

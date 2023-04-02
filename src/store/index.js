@@ -5,6 +5,8 @@ export default createStore({
     cardType: [{name: 'TANK', class: 'type-tank'}],
     imageUrl: '',
     charactorName: 'Charactor Name',
+    dataCenter: 'Elemental',
+    world: 'Aegis',
     contentsName: '募集コンテンツ名',
     startTime: '0',
     endTime: '0',
@@ -37,6 +39,12 @@ export default createStore({
     },
     changeName(state, value) {
       state.charactorName = value
+    },
+    dataCenter(state, value) {
+      state.dataCenter = value
+    },
+    world(state, value) {
+      state.world = value
     },
     contentsName(state, value) {
       state.contentsName = value

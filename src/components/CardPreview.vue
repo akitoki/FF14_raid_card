@@ -12,7 +12,7 @@
               img(:src="[cardType.class ? require(`@/assets/images/roles/${cardType.class}.png`) : require('@/assets/images/roles/type-tank.png')]")
             .profile
               .name {{charactorName}}
-              .world Elemental / Garuda
+              .world {{dataCenter}} / {{world}}
           .contents-block
             .block-inner
               .top-block
@@ -43,7 +43,7 @@
                       span(v-if="weekUpdate") {{yesOrNo}}）
           .bottom-prof-block
             .job-chart.flex-block
-              .title JOB CHART
+              .title PROFICIENCY LEVELS
               .chart-block
                 ul.chart
                   li(v-if="jobCount > 0")
@@ -94,6 +94,12 @@ export default {
     },
     charactorName() {
       return this.$store.state.charactorName
+    },
+    dataCenter() {
+      return this.$store.state.dataCenter
+    },
+    world() {
+      return this.$store.state.world
     },
     contentsName() {
       return this.$store.state.contentsName
@@ -169,8 +175,9 @@ export default {
         .then(function (dataUrl) {
           const img = new Image();
           img.src = dataUrl;
-          document.getElementById('card').remove();
+          console.log(dataUrl)
           document.body.appendChild(img);
+          window.open(dataUrl, 'cardImage', 'width=900, height=600')
         })
         .catch(function (error) {
           console.error('oops, something went wrong!', error);
