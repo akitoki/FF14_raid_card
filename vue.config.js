@@ -3,5 +3,5 @@ module.exports = defineConfig({
   transpileDependencies: true,
   outputDir: 'docs',
   assetsDir: './',
-  publicPath: '/ff14_raid_card'
+  publicPath: '/FF14_raid_card'
 })
