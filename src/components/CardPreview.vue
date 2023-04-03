@@ -82,6 +82,10 @@
     .button-wrap
       button.download(@click="caputureImage")
         | カード画像をダウンロード
+      p.safari-notice(v-if="userAgent === 'Safari'")
+        | Safariのみ画像をダウンロードする際に一部画像が表示されない不具合があります。
+        br
+        | ダウンロードし直せば解消されますので、お手数ですが再ダウンロードをお願いします。
 </template>
 
 <script>
@@ -171,6 +175,9 @@ export default {
     },
     comment() {
       return this.$store.state.comment
+    },
+    userAgent() {
+      return this.$store.state.userAgent
     },
   },
   methods: {

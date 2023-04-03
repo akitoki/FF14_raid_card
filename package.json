@@ -18,6 +18,7 @@
     "stylus-loader": "^7.1.0",
     "stylus-resources-loader": "^0.0.4",
     "vue": "^3.2.13",
+    "vue-cropperjs": "^5.0.0",
     "vuex": "^4.0.2"
   },
   "devDependencies": {
