@@ -73,12 +73,14 @@
             option(v-for="standard in standardArr" :value="standard") {{ standard }}
         .weekly
           p.notice 特定の曜日に活動できない、または活動ができるという場合その曜日を表示することができます
-          label(v-for="week in weekArr")
-            input(type="checkbox" :value="week" name="week" v-model="weekUpdate")
-            span {{week}}
-          label(v-for="yesOrNo in yesOrNos")
-            input(type="radio" name="yesOrNo" :value="yesOrNo" v-model="yesOrNoSelect")
-            span {{yesOrNo}}
+          .week-checkbox
+            label(v-for="week in weekArr")
+              input(type="checkbox" :value="week" name="week" v-model="weekUpdate")
+              span {{week}}
+          .yes-or-no-radio
+            label(v-for="yesOrNo in yesOrNos")
+              input(type="radio" name="yesOrNo" :value="yesOrNo" v-model="yesOrNoSelect")
+              span {{yesOrNo}}
     dl.input-column
       dt 可能なジョブおよび練度
       dd
@@ -103,12 +105,11 @@
       :guides="true"
       :view-mode="1"
       :auto-crop-area="1"
-      :min-container-width="600"
-      :min-container-height="600"
+      :min-container-width="300"
+      :min-container-height="300"
       :background="false"
       :rotatable="false"
       :src="imgSrc"
-      :img-style="{ 'width': '300px', 'height': '600px' }"
       :aspect-ratio="targetWidth / targetHeight"
       drag-mode="crop"
     )

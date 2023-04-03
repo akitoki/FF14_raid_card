@@ -1,17 +1,17 @@
 <template lang="pug">
-.select-wrapper
+.select-wrapper.sp-full-width
   select(v-model="dataCenterSelect")
     option(v-for="dataCenter in dataCenters" :value="dataCenter") {{dataCenter}}
-.select-wrapper(v-if="dataCenterSelect === 'Elemental'")
+.select-wrapper.sp-full-width(v-if="dataCenterSelect === 'Elemental'")
   select(v-model="worldElemental")
     option(v-for="elemental in elementalDc" :value="elemental") {{elemental}}
-.select-wrapper(v-if="dataCenterSelect === 'Gaia'")
+.select-wrapper.sp-full-width(v-if="dataCenterSelect === 'Gaia'")
   select(v-model="worldGaia")
     option(v-for="Gaia in gaiaDc" :value="Gaia") {{Gaia}}
-.select-wrapper(v-if="dataCenterSelect === 'Mana'")
+.select-wrapper.sp-full-width(v-if="dataCenterSelect === 'Mana'")
   select(v-model="worldMana")
     option(v-for="mana in manaDc" :value="mana") {{mana}}
-.select-wrapper(v-if="dataCenterSelect === 'Meteor'")
+.select-wrapper.sp-full-width(v-if="dataCenterSelect === 'Meteor'")
   select(v-model="worldMeteor")
     option(v-for="meteor in meteorDc" :value="meteor") {{meteor}}
 </template>

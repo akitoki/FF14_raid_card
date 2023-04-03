@@ -1,8 +1,18 @@
 .card-section
   margin-top 80px
+  +mediaSp()
+    margin-top 60px
   .card-inner
-    width 900px
-    margin 0 auto
+    +mediaPc()
+      width 900px
+      margin 0 auto
+    .card-sp-text
+      +mediaPc()
+        display none
+      +mediaSp()
+        color #fff
+        font-size 1.4rem
+        margin 20px 0
     .title
       color #fff
       font-size 3rem
@@ -24,6 +34,11 @@
       cursor pointer
       color #fff
       font-size 2.4rem
+      +mediaSp()
+        font-size 1.8rem
+        padding 20px 30px
+        width 100%
+        text-align center
     .safari-notice
       margin-top 20px
       color #fff
@@ -31,6 +46,11 @@
 #card-preview
   width 900px
   margin 0 auto
+  +mediaSp()
+    width 100vw
+    margin 0 -15px
+    overflow scroll
+    padding 0 15px
 .card-wrap
   width 900px
   height 600px

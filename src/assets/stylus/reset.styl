@@ -1,3 +1,10 @@
+mediaSp()
+  @media only screen and (max-width 767px)
+    {block}
+mediaPc()
+  @media print, screen and (min-width 768px)
+    {block}
+
 *
   box-sizing border-box
 
@@ -163,8 +170,9 @@ label
 button
   border-radius 0
   transition .3s
-  &:hover
-    opacity .7
+  +mediaPc()
+    &:hover
+      opacity .7
   &:focus:not(:focus-visible)
     outline 0
 

@@ -2,6 +2,8 @@
 .card-section#card
   .card-inner
     h2.title CARD PREVIEW
+    p.card-sp-text
+      | 横スクロールでカードを動かして全体を確認してください
     #card-preview
       .card-wrap(:class="[cardType.class ? cardType.class : 'type-tank']")
         .frame

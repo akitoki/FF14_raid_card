@@ -1,25 +1,31 @@
 <template lang="pug">
 .job-chart-column(v-if="Columns > 0")
-  span.title ジョブ
-  .select-wrapper
-    select(v-model="selectJob1")
-      option(v-for="job in jobs" :value="job.id") {{job.name}}
-  span.title 練度
-  input(type="number" id="jobChartPoint1" value="50" @change="jobChartPoint1" min="0" max="100" placeholder="1~100までを設定")
+  .wrap
+    span.title ジョブ
+    .select-wrapper
+      select(v-model="selectJob1")
+        option(v-for="job in jobs" :value="job.id") {{job.name}}
+  .wrap
+    span.title 練度
+    input(type="number" id="jobChartPoint1" value="50" @change="jobChartPoint1" min="0" max="100" placeholder="1~100までを設定")
 .job-chart-column(v-if="Columns > 1")
-  span.title ジョブ
-  .select-wrapper
-    select(v-model="selectJob2")
-      option(v-for="job in jobs" :value="job.id") {{job.name}}
-  span.title 練度
-  input(type="number" id="jobChartPoint2" value="50" @change="jobChartPoint2" min="0" max="100")
+  .wrap
+    span.title ジョブ
+    .select-wrapper
+      select(v-model="selectJob2")
+        option(v-for="job in jobs" :value="job.id") {{job.name}}
+  .wrap
+    span.title 練度
+    input(type="number" id="jobChartPoint2" value="50" @change="jobChartPoint2" min="0" max="100")
 .job-chart-column(v-if="Columns > 2")
-  span.title ジョブ
-  .select-wrapper
-    select(v-model="selectJob3")
-      option(v-for="job in jobs" :value="job.id") {{job.name}}
-  span.title 練度
-  input(type="number" id="jobChartPoint3" value="50" @change="jobChartPoint3" min="0" max="100")
+  .wrap
+    span.title ジョブ
+    .select-wrapper
+      select(v-model="selectJob3")
+        option(v-for="job in jobs" :value="job.id") {{job.name}}
+  .wrap
+    span.title 練度
+    input(type="number" id="jobChartPoint3" value="50" @change="jobChartPoint3" min="0" max="100")
 .job-chart-column(v-if="Columns > 3")
   span.title ジョブ
   .select-wrapper
