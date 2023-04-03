@@ -14,9 +14,10 @@
         p.notice
           | 縦600px、縦300pxまたは2:1比率の縦長画像推奨。
           br
-          | 大きいサイズや異なる比率の画像は中央に合わせてトリミングされます。
+          | 画像を選択するとトリミング画面が表示されますので、お好みの部分でトリミングしてください。
         .image-input
-          input(type="file" ref="preview" @change="imgUpload")
+          input(@change="setImage" type="file" name="image" accept="image/*")
+        ImageCropper
     dl.input-column
       dt キャラクター名
       dd
@@ -84,7 +85,7 @@
         p.notice
           | 対応可能なジョブの選択と、そのジョブに対する練度を自己評価で0～100の間で入力してください（最大5つまで）
           br
-          span 補足：今回一番出したいジョブを100とし、その他のジョブはそれに大して相対的にこれくらい、といったように気楽に評価してください
+          span 補足：今回一番出したいジョブを100とし、その他のジョブはそれに大して相対的にこれくらい、といったような具合で気楽に評価してください
         JobChart
     dl.input-column
       dt コメント
@@ -95,16 +96,38 @@
           | 枠外にはみ出てしまう場合は省略されます
         textarea(v-model="comment" id="comment" placeholder="例：クリアに向けて頑張りますのでよろしくお願いします！")
   .scroll-preview(@click="scrollPreview") カードのプレビューを見る
+.crop-modal-wrapper(v-if="imgSrc !== ''")
+  .croppwer-container
+    vue-cropper(
+      ref="cropper"
+      :guides="true"
+      :view-mode="1"
+      :auto-crop-area="1"
+      :min-container-width="600"
+      :min-container-height="600"
+      :background="false"
+      :rotatable="false"
+      :src="imgSrc"
+      :img-style="{ 'width': '300px', 'height': '600px' }"
+      :aspect-ratio="targetWidth / targetHeight"
+      drag-mode="crop"
+    )
+    p.notice
+      | マウスのスクロールで画像をズーム可能です
+    button(@click="cropImage" v-if="imgSrc !== ''") トリミングを反映する
 </template>
 
 <script>
 import ServerSelect from './ServerSelect';
 import JobChart from './JobChart';
+import VueCropper from 'vue-cropperjs'
+import 'cropperjs/dist/cropper.css'
 export default {
   name: 'InputContents',
   components: {
     ServerSelect,
-    JobChart
+    JobChart,
+    VueCropper
   },
   data() {
     return {
@@ -135,15 +158,15 @@ export default {
       weekArr: ['月', '火', '水', '木', '金', '土', '日', '祝日'],
       yesOrNoSelect: '不可',
       yesOrNos: ['不可', '可能'],
-      comment: ''
+      comment: '',
+      targetWidth: 1,
+      targetHeight: 2,
+      imgSrc: '',
+      cropImg: '',
+      filename: ''
     }
   },
   methods: {
-    imgUpload() {
-      let image = this.$refs.preview.files[0]
-      this.imageUrl = URL.createObjectURL(image)
-      this.$store.commit("immageUpload", this.imageUrl);
-    },
     keyUpHalfSizeRestriction() {
       let tmp_value = this.changeName
       if(tmp_value){
@@ -153,7 +176,30 @@ export default {
     scrollPreview() {
       const card = document.getElementById('card')
       card.scrollIntoView({behavior : 'smooth'})
+    },
+    setImage (e) {
+      const file = e.target.files[0]
+      this.filename = file.name
+      if (!file.type.includes('image/')) {
+        alert('Please select an image file')
+        return
+      }
+      if (typeof FileReader === 'function') {
+        const reader = new FileReader()
+        reader.onload = (event) => {
+          this.imgSrc = event.target.result
+        }
+        reader.readAsDataURL(file)
+      } else {
+        alert('Sorry, FileReader API not supported')
+      }
+    },
+    cropImage () {
+      this.cropImg = this.$refs.cropper.getCroppedCanvas().toDataURL()
+      this.$store.commit("immageUpload", this.cropImg);
+      this.imgSrc = ''
     }
+
   },
   watch: {
     cardTypeSelect(value) {
