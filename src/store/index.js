@@ -28,7 +28,8 @@ export default createStore({
     jobPoint4: 50,
     jobPoint5: 50,
     jobCount: 1,
-    comment: ''
+    comment: '',
+    userAgent: ''
   },
   mutations: {
     cardType(state, value) {
@@ -114,6 +115,9 @@ export default createStore({
     },
     comment(state, value) {
       state.comment = value
+    },
+    userAgent(state, ua) {
+      state.userAgent = ua
     }
   },
   actions: {

@@ -21,14 +21,15 @@ header.header
           img(:src="require('@/assets/images/card-sample.png')")
       section
         h2.title 動作確認環境
+        ul
+          li Google Chrome(バージョン111.0.5563.147)
+          li Microsoft Edge(バージョン111.0.1661.6)
+          li Safari(バージョン16.3)※
         p
-          | Google Chrome(バージョン111.0.5563.147)
-          br
-          | Microsoft Edge(バージョン111.0.1661.6)
-          br
-          | Safari(バージョン16.3)
-          br
-          | 上記以外のブラウザや、スマートフォンでの動作に関しては保証致しかねます。スマートフォン用の表示は後日対応予定ですのでお待ちください。
+          | ※Safariのみ画像をダウンロードする際に一部画像が表示されない不具合があります。ダウンロードし直せば解消されますので、お手数ですが再ダウンロードをお願いします。
+        p
+          | 上記以外のブラウザや、スマートフォンでの動作に関しては保証致しかねます。
+          | スマートフォン用の表示は後日対応予定ですのでお待ちください。
       section
         h2.title ご利用にあたって
         p
@@ -46,7 +47,7 @@ header.header
       section
         h2.title 更新履歴
         ul
-          li 2023.04.03 キャラクター画像登録時にトリミング機能を追加
+          li 2023.04.03 キャラクター画像登録時にトリミング機能を追加、Safariでご利用の際の注釈文を追加
           li 2023.04.03 ジョブ練度設定の部分に補足文言の追加
           li 2023.04.03 カード生成の際にフォントが正常に当たらない不具合、Safariで画像が正しいデザインで出力されない不具合修正
           li 2023.04.02 ジェネレーター公開
@@ -73,6 +74,16 @@ export default {
   components: {
     InputContents,
     CardPreview
+  },
+  mounted() {
+    window.onload = () => {
+      const userAgent = window.navigator.userAgent.toLowerCase();
+      if (userAgent.indexOf('safari') !== -1 && userAgent.indexOf('chrome') === -1 && userAgent.indexOf('edge') === -1) {
+        this.$store.commit("userAgent", 'Safari')
+      } else {
+        this.$store.commit("userAgent", 'other')
+      }
+    }
   },
   methods: {
     pageCountPlus() {
