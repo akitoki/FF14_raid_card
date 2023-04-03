@@ -112,8 +112,10 @@
       :aspect-ratio="targetWidth / targetHeight"
       drag-mode="crop"
     )
-    p.notice
-      | マウスのスクロールで画像をズーム可能です
+    p.notice.pc
+      | マウスのスクロールで画像のズームを調整可能です
+    p.notice.sp
+      | ピンチイン、ピンチアウトで画像のズームを調整可能です
     button(@click="cropImage" v-if="imgSrc !== ''") トリミングを反映する
 </template>
 

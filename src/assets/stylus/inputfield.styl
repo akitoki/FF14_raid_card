@@ -88,8 +88,7 @@
           width 100%
       label
         margin-bottom 0
-        + label
-          margin-left 10px
+        margin-right 10px
         input[type="checkbox"], input[type="radio"]
         span
           display inline-block
@@ -137,6 +136,8 @@
     .notice
       color #fff
       margin-top 10px
+      &.sp
+        display none
     button
       margin-top 20px
       border none
@@ -145,3 +146,103 @@
       padding 20px 30px
       font-size 2rem
       cursor pointer
+
+.sp
+  .scroll-preview
+    bottom 80px
+    width calc(100vw - 80px)
+    right 40px
+    font-size 4rem
+    padding 40px 0
+    text-align center
+    background #fff
+    border 1px solid #999
+    &:hover
+      opacity 1
+  .input-field-inner
+    width 960px
+    margin 0 20px
+    padding 20px 30px
+    .input-column
+      padding 30px 0
+      display block
+      dt
+        width 100%
+        font-size 5rem
+        margin-bottom 40px
+        padding-bottom 30px
+        border-bottom 2px solid #999
+      dd
+        font-size 4rem
+        p.notice
+          font-size 4rem
+          margin-bottom 40px
+          span
+            margin 15px 0
+            display inline-block
+            font-size 3rem
+            line-height 1.4
+        .weekly
+          margin-top 50px
+        .job-chart-column
+          span
+            margin-right 25px
+          + .job-chart-column
+            margin-top 30px
+        .button-list
+          margin-top 40px
+          text-align center
+          button
+            transition 0s
+        label
+          margin-right 40px
+          margin-bottom 20px
+        input[type="checkbox"], input[type="radio"]
+          transform scale(3)
+          display inline-block
+          vertical-align 8px
+          margin-right 20px
+        textarea
+          height 400px
+          border-radius 10px
+      + .input-column
+        border-top 0
+        margin-top 40px
+      input[type="text"], input[type="number"]
+        border 0
+        padding 20px 40px
+        box-shadow none
+        border-radius 10px
+        &.full-width
+          width 100%
+      .select-wrapper
+        margin-right 20px
+        + .select-wrapper
+          margin-left 50px
+        select
+          padding 15px 80px 15px 30px
+          border-radius 10px
+        &::after
+          content ""
+          display block
+          width 0
+          height 0
+          border-style solid
+          border-width 15px 10px 0 10px
+          border-color #454161 transparent transparent transparent
+          position absolute
+          right 25px
+          top 50%
+          transform translateY(-50%)
+  .crop-modal-wrapper
+    .croppwer-container
+      .notice
+        font-size 3.5rem
+        margin 50px 0
+        &.pc
+          display none
+        &.sp
+          display block
+      button
+        font-size 4rem
+        padding 30px 50px
