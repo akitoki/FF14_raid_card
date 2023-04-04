@@ -2,7 +2,7 @@
 header.header
   .header-inner
     h1.title
-      span FINAL FANTAXY XIV
+      span FINAL FANTASY XIV
       span RAID CHARACTER CARD
 .main-contents
   .about-page(v-if="pageCount === 1")
@@ -10,7 +10,7 @@ header.header
       section
         h2.title このページについて
         p
-          | FINAL FANTAXY XIVにおいて、高難易度レイド等のバトルコンテンツへ向けた自己紹介用のカードジェネレーターです。
+          | FINAL FANTASY XIVにおいて、高難易度レイド等のバトルコンテンツへ向けた自己紹介用のカードジェネレーターです。
           br
           | The Lodestoneの募集記事と一緒にSNSに投稿するなど、固定パーティーを探す際の補助的な用途にご活用ください。
       section
