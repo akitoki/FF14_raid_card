@@ -21,7 +21,7 @@
     dl.input-column
       dt キャラクター名
       dd
-        input.full-width(type="text" v-model="changeName" id="charactorName" placeholder="キャラクター名" @keyup="keyUpHalfSizeRestriction")
+        input.full-width(type="url" v-model="changeName" id="charactorName" placeholder="キャラクター名" @keyup="keyUpHalfSizeRestriction")
     dl.input-column
       dt DC/ワールド
       dd
