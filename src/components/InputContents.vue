@@ -174,7 +174,7 @@ export default {
     keyUpHalfSizeRestriction() {
       let tmp_value = this.changeName
       if(tmp_value){
-        this.changeName = tmp_value.replace(/[^0-9a-zA-Z/ +]/g,'');
+        this.changeName = tmp_value.replace(/[^0-9a-zA-Z/ +\-']/g,'');
       }
     },
     scrollPreview() {
