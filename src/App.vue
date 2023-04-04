@@ -25,8 +25,9 @@ header.header
           li Google Chrome(バージョン111.0.5563.147)
           li Microsoft Edge(バージョン111.0.1661.6)
           li Safari(バージョン16.3)※
+          li Mobile Safari(iOS 16.2)
         p
-          | ※Safariのみ画像をダウンロードする際に一部画像が表示されない不具合があります。ダウンロードし直せば解消される場合がありますので、お手数ですが再ダウンロードをお願いします。
+          | ※Safariのみ画像をダウンロードする際に一部画像が表示されない場合があります。ダウンロードし直せば解消される場合がありますので、お手数ですが再ダウンロードをお願いします。
         p
           | 上記以外のブラウザでの動作に関しては保証致しかねます。
         p.sp-text
@@ -50,7 +51,7 @@ header.header
       section
         h2.title 更新履歴
         ul
-          li 2023.04.04 スマートフォンの表示に暫定対応（実機未検証につき、不具合が発生した場合は修正までお待ちください。特にiPhone）
+          li 2023.04.04 スマートフォンの表示に対応
           li 2023.04.03 キャラクター画像登録時にトリミング機能を追加、Safariでご利用の際の注釈文を追加、曜日を登録し過ぎるとcopyrightが消えてしまうので暫定対策
           li 2023.04.03 ジョブ練度設定の部分に補足文言の追加
           li 2023.04.03 カード生成の際にフォントが正常に当たらない不具合、Safariで画像が正しいデザインで出力されない不具合修正
@@ -89,6 +90,7 @@ export default {
       }
       if (navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
         document.querySelector('body').classList.add('sp')
+        this.$store.commit("userAgent", 'SmartPhone')
       }
     }
   },

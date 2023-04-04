@@ -80,20 +80,31 @@
                     p {{comment}}
               .copyright (C) SQUARE ENIX CO., LTD. All Rights Reserved.
     .button-wrap
-      button.download(@click="caputureImage")
+      button.download(@click="caputureImage" v-if="userAgent !== 'SmartPhone'")
         | カード画像をダウンロード
+      button.download(@click="caputureImage" v-if="userAgent === 'SmartPhone'")
+        | カード画像を表示
       p.safari-notice(v-if="userAgent === 'Safari'")
         | Safariのみ画像をダウンロードする際に一部画像が表示されない不具合があります。
         br
         | ダウンロードし直すことで解消される場合がありますので、お手数ですが再ダウンロードをお願いします。
+.card-modal(v-if="spCardCreate !== ''")
+  .modal-inner
+    #card-image
+    p 画像を長押しして端末に保存してください
+    button(@click="cardModalClose") 閉じる
 </template>
-
 <script>
 import domtoimage from 'dom-to-image'
 import FileSaver from 'file-saver'
 
 export default {
   name: 'cardPreview',
+  data() {
+    return {
+      spCardCreate: ''
+    }
+  },
   computed: {
     cardType() {
       return this.$store.state.cardType
@@ -182,16 +193,38 @@ export default {
   },
   methods: {
     caputureImage() {
+      let target = this
       const node = document.querySelector('#card-preview');
+      // Safariでは1回の描画で正常に表示されないので、同じ処理を何度も回す力業
       domtoimage.toPng(node)
         .then(function (dataUrl) {
           const img = new Image();
           img.src = dataUrl;
-          FileSaver.saveAs(dataUrl, "raid-card.png");
+          domtoimage.toPng(node)
+            .then(function (dataUrl2) {
+              const img = new Image();
+              img.src = dataUrl2;
+              domtoimage.toPng(node)
+                .then(function (dataUrl3) {
+                  const img = new Image();
+                  img.src = dataUrl3;
+                  if (navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
+                    target.spCardCreate = 'create'
+                    target.$nextTick(function() {
+                      document.getElementById('card-image').appendChild(img);
+                    })
+                  } else {
+                    FileSaver.saveAs(dataUrl, "raid-card.png");
+                  }
+                })
+            })
         })
         .catch(function (error) {
           console.error('カード画像出力エラー', error);
         });
+    },
+    cardModalClose() {
+      this.spCardCreate = ''
     }
   }
 }
