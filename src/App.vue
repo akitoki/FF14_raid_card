@@ -89,6 +89,7 @@ export default {
       }
       if (navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
         document.querySelector('body').classList.add('sp')
+        this.$store.commit("userAgent", 'SmartPhone')
       }
     }
   },
