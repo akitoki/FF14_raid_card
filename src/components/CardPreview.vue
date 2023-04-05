@@ -26,7 +26,7 @@
                     .flex-block
                       dl.type.time
                         dt 活動可能時間
-                        dd {{startTimeSelect}}時～{{endTimeSelect}}時
+                        dd {{startTime}}時～{{endTime}}時
                       dl.type.vc
                         dt VC
                         dd {{vcCheck}}
@@ -42,8 +42,8 @@
                         dt 活動頻度
                         dd
                           span {{frequency}}{{standard}}
-                          span.week(v-if="weekUpdate") （{{weekUpdate}}
-                          span(v-if="weekUpdate") {{yesOrNo}}）
+                          span.week(v-if="week") （{{week}}
+                          span(v-if="week") {{yesOrNo}}）
               .bottom-prof-block
                 .job-chart.flex-block
                   .title PROFICIENCY LEVELS
@@ -97,6 +97,7 @@
 <script>
 import domtoimage from 'dom-to-image'
 import FileSaver from 'file-saver'
+import { mapState } from 'vuex'
 
 export default {
   name: 'cardPreview',
@@ -105,92 +106,37 @@ export default {
       spCardCreate: ''
     }
   },
-  computed: {
-    cardType() {
-      return this.$store.state.cardType
-    },
-    imageUrl() {
-      return this.$store.state.imageUrl
-    },
-    charactorName() {
-      return this.$store.state.charactorName
-    },
-    dataCenter() {
-      return this.$store.state.dataCenter
-    },
-    world() {
-      return this.$store.state.world
-    },
-    contentsName() {
-      return this.$store.state.contentsName
-    },
-    startTimeSelect() {
-      return this.$store.state.startTime
-    },
-    endTimeSelect() {
-      return this.$store.state.endTime
-    },
-    vcCheck() {
-      return this.$store.state.vcCheck
-    },
-    dcTravelCheck() {
-      return this.$store.state.dcTravelCheck
-    },
-    clearPeriod() {
-      return this.$store.state.clearPeriod
-    },
-    frequency() {
-      return this.$store.state.frequency
-    },
-    standard() {
-      return this.$store.state.standard
-    },
-    weekUpdate() {
-      return this.$store.state.week
-    },
-    yesOrNo() {
-      return this.$store.state.yesOrNo
-    },
-    selectJob1() {
-      return this.$store.state.selectJob1
-    },
-    selectJob2() {
-      return this.$store.state.selectJob2
-    },
-    selectJob3() {
-      return this.$store.state.selectJob3
-    },
-    selectJob4() {
-      return this.$store.state.selectJob4
-    },
-    selectJob5() {
-      return this.$store.state.selectJob5
-    },
-    jobPoint1() {
-      return this.$store.state.jobPoint1
-    },
-    jobPoint2() {
-      return this.$store.state.jobPoint2
-    },
-    jobPoint3() {
-      return this.$store.state.jobPoint3
-    },
-    jobPoint4() {
-      return this.$store.state.jobPoint4
-    },
-    jobPoint5() {
-      return this.$store.state.jobPoint5
-    },
-    jobCount() {
-      return this.$store.state.jobCount
-    },
-    comment() {
-      return this.$store.state.comment
-    },
-    userAgent() {
-      return this.$store.state.userAgent
-    },
-  },
+  computed: mapState([
+    'cardType',
+    'imageUrl',
+    'charactorName',
+    'dataCenter',
+    'dataCenter',
+    'world',
+    'contentsName',
+    'startTime',
+    'endTime',
+    'vcCheck',
+    'dcTravelCheck',
+    'clearPeriod',
+    'frequency',
+    'standard',
+    'week',
+    'yesOrNo',
+    'selectJob1',
+    'selectJob2',
+    'selectJob3',
+    'selectJob4',
+    'selectJob5',
+    'jobPoint1',
+    'jobPoint2',
+    'jobPoint3',
+    'jobPoint4',
+    'jobPoint5',
+    'jobCount',
+    'comment',
+    'userAgent'
+  ]),
   methods: {
     caputureImage() {
       let target = this
